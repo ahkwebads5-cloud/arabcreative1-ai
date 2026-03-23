@@ -1,4 +1,3 @@
-// pages/BrandWorkspace.jsx
 import React, { useState } from 'react';
 import { Upload, Palette, CheckCircle, Type } from 'lucide-react';
 
@@ -15,7 +14,7 @@ export default function BrandWorkspace() {
   const handleSave = (e) => {
     e.preventDefault();
     setIsSaved(true);
-    setTimeout(() => setIsSaved(false), 3000); // Reset success message
+    setTimeout(() => setIsSaved(false), 3000); // إخفاء رسالة النجاح بعد 3 ثوانٍ
   };
 
   return (
@@ -30,7 +29,7 @@ export default function BrandWorkspace() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
         <form onSubmit={handleSave} className="space-y-6">
           
-          {/* Brand Name & Description */}
+          {/* اسم العلامة والوصف */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">اسم العلامة التجارية</label>
@@ -54,7 +53,7 @@ export default function BrandWorkspace() {
             </div>
           </div>
 
-          {/* Logo Upload */}
+          {/* رفع الشعار */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">شعار العلامة التجارية (Logo)</label>
             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
@@ -71,7 +70,7 @@ export default function BrandWorkspace() {
             </div>
           </div>
 
-          {/* Brand Colors */}
+          {/* الألوان الأساسية */}
           <div className="border-t border-gray-100 pt-6">
             <h3 className="text-md font-medium text-gray-900 mb-4 flex items-center">
               <Palette className="w-5 h-5 text-gray-500 me-2" />
@@ -105,7 +104,7 @@ export default function BrandWorkspace() {
             </div>
           </div>
 
-          {/* Submit Action */}
+          {/* زر الحفظ */}
           <div className="flex items-center justify-end pt-4 border-t border-gray-100">
             {isSaved && (
               <span className="text-green-600 flex items-center text-sm font-medium me-4 animate-pulse">

@@ -1,4 +1,3 @@
-// pages/CopyGenerator.jsx
 import React, { useState } from 'react';
 import { Wand2, Copy, CheckCircle, Type, Sparkles } from 'lucide-react';
 
@@ -9,7 +8,7 @@ export default function CopyGenerator() {
   const [generatedResults, setGeneratedResults] = useState(null);
   const [copiedId, setCopiedId] = useState(null);
 
-  // Simulated AI Copy Generation
+  // محاكاة الذكاء الاصطناعي لتوليد النصوص
   const handleGenerate = (e) => {
     e.preventDefault();
     if (!productDesc) return;
@@ -45,7 +44,7 @@ export default function CopyGenerator() {
   return (
     <div className="max-w-5xl mx-auto space-y-6">
       
-      {/* Header */}
+      {/* الترويسة */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 flex items-center">
           مولد النصوص <Type className="ms-2 text-blue-600" size={24} />
@@ -55,7 +54,7 @@ export default function CopyGenerator() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        {/* Input Form Area */}
+        {/* نموذج الإدخال */}
         <div className="lg:col-span-1 bg-white rounded-xl shadow-sm border border-gray-100 p-6 h-fit">
           <form onSubmit={handleGenerate} className="space-y-5">
             <div>
@@ -95,7 +94,7 @@ export default function CopyGenerator() {
           </form>
         </div>
 
-        {/* Output Area */}
+        {/* منطقة النتائج */}
         <div className="lg:col-span-2 space-y-6">
           {isGenerating && (
             <div className="h-full flex flex-col items-center justify-center space-y-4 text-gray-500 min-h-[300px] bg-gray-50 rounded-xl border border-dashed border-gray-200">
@@ -106,7 +105,7 @@ export default function CopyGenerator() {
 
           {generatedResults && !isGenerating && (
             <div className="space-y-6 animate-fade-in">
-              {/* Primary Text Section */}
+              {/* النص الأساسي */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-gray-100 pb-2">النص الأساسي (Primary Text)</h3>
                 <div className="space-y-4">
@@ -125,7 +124,7 @@ export default function CopyGenerator() {
                 </div>
               </div>
 
-              {/* Headlines Section */}
+              {/* العناوين */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-gray-100 pb-2">العناوين (Headlines)</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -140,7 +139,7 @@ export default function CopyGenerator() {
                 </div>
               </div>
 
-              {/* CTA Section */}
+              {/* أزرار الدعوة لاتخاذ إجراء */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-gray-100 pb-2">دعوة لاتخاذ إجراء (Call to Action)</h3>
                 <div className="flex flex-wrap gap-3">

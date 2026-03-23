@@ -1,4 +1,3 @@
-// pages/CreativeGenerator.jsx
 import React, { useState } from 'react';
 import { 
   Link, Zap, Wand2, Download, Edit3, Type, Info, CheckCircle2 
@@ -13,22 +12,22 @@ export default function CreativeGenerator() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [creatives, setCreatives] = useState([]);
   
-  // Local state to simulate credit deduction (would normally come from global state/backend)
+  // رصيد وهمي لمحاكاة الخصم
   const [credits, setCredits] = useState(450);
 
-  // Simulated Workflow 1: Instant Ads from URL
+  // محاكاة سحب البيانات من رابط موقع
   const handleUrlScrape = () => {
     if (!url) return;
     setIsScraping(true);
     
-    // Simulate API delay for scraping website
+    // تأخير زمني وهمي لمحاكاة الذكاء الاصطناعي
     setTimeout(() => {
       setAudience('الشباب ورواد الأعمال (18-35 عام)');
       setIsScraping(false);
     }, 1500);
   };
 
-  // Simulated Workflow 2: Generate Creatives & Deduct Credits
+  // محاكاة توليد الإعلانات
   const handleGenerate = (e) => {
     e.preventDefault();
     if (credits < 10) return alert('عذراً، رصيدك غير كافٍ.');
@@ -36,12 +35,11 @@ export default function CreativeGenerator() {
     setIsGenerating(true);
     setCreatives([]);
 
-    // Simulate AI Generation time
     setTimeout(() => {
-      setCredits(prev => prev - 10); // Deduct credits
+      setCredits(prev => prev - 10); // خصم الرصيد
       setIsGenerating(false);
       
-      // Mock generated output
+      // مخرجات وهمية
       setCreatives([
         { id: 1, score: 98, img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=400', copy: 'أطلق العنان لعملك' },
         { id: 2, score: 92, img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400', copy: 'نمو غير مسبوق' },
@@ -54,7 +52,7 @@ export default function CreativeGenerator() {
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       
-      {/* Header */}
+      {/* الترويسة العلوية */}
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 flex items-center">
@@ -68,11 +66,10 @@ export default function CreativeGenerator() {
         </div>
       </div>
 
-      {/* Input Form */}
+      {/* نموذج الإدخال */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <form onSubmit={handleGenerate} className="space-y-5">
           
-          {/* URL Input & Scrape */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">رابط المنتج أو الصفحة (URL)</label>
             <div className="flex space-x-reverse space-x-3">
@@ -133,17 +130,13 @@ export default function CreativeGenerator() {
               disabled={isGenerating}
               className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 rounded-lg font-bold text-lg transition-all shadow-md flex justify-center items-center disabled:opacity-70"
             >
-              {isGenerating ? (
-                <>جاري تصميم الإعلانات بالذكاء الاصطناعي...</>
-              ) : (
-                <>توليد الإعلانات الآن <Wand2 className="ms-2" size={20} /></>
-              )}
+              {isGenerating ? 'جاري تصميم الإعلانات بالذكاء الاصطناعي...' : <>توليد الإعلانات الآن <Wand2 className="ms-2" size={20} /></>}
             </button>
           </div>
         </form>
       </div>
 
-      {/* Loading Skeleton */}
+      {/* شاشة التحميل */}
       {isGenerating && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
           {[1, 2, 3, 4].map((i) => (
@@ -152,7 +145,7 @@ export default function CreativeGenerator() {
         </div>
       )}
 
-      {/* Output Area */}
+      {/* منطقة المخرجات (التصاميم) */}
       {creatives.length > 0 && (
         <div className="mt-8 space-y-4">
           <div className="flex items-center justify-between">
@@ -168,41 +161,28 @@ export default function CreativeGenerator() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {creatives.map((creative) => (
-              <div key={creative.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group hover:shadow-md transition-shadow relative">
+              <div key={creative.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden group relative">
                 
-                {/* Predictive Score Badge */}
+                {/* شارة التقييم */}
                 <div className="absolute top-3 end-3 z-10 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-sm flex items-center border border-white/50">
                   <span className={`text-sm font-bold ${creative.score >= 90 ? 'text-green-600' : 'text-yellow-600'}`}>
                     {creative.score}/100
                   </span>
-                  <span className="text-xs text-gray-600 ms-1 font-medium">التقييم</span>
                 </div>
 
-                {/* Banner Image */}
+                {/* صورة الإعلان */}
                 <div className="relative h-56 bg-gray-100 overflow-hidden">
-                  <img 
-                    src={creative.img} 
-                    alt="Generated Creative" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Overlay for Mock Copy */}
+                  <img src={creative.img} alt="Generated Creative" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black/40 flex items-end p-4">
                     <p className="text-white font-bold text-lg drop-shadow-md">{creative.copy}</p>
                   </div>
                 </div>
 
-                {/* Quick Actions */}
+                {/* أزرار الإجراءات */}
                 <div className="p-3 bg-gray-50 flex justify-between border-t border-gray-100">
-                  <button className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors tooltip" title="تحميل">
-                    <Download size={18} />
-                  </button>
-                  <button className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors" title="تعديل التصميم">
-                    <Edit3 size={18} />
-                  </button>
-                  <button className="p-2 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors flex items-center text-sm font-medium" title="توليد نصوص بديلة">
-                    <Type size={16} className="me-1" />
-                    نص
-                  </button>
+                  <button className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="تحميل"><Download size={18} /></button>
+                  <button className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors" title="تعديل"><Edit3 size={18} /></button>
+                  <button className="p-2 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors flex items-center text-sm font-medium" title="نصوص"><Type size={16} className="me-1" />نص</button>
                 </div>
               </div>
             ))}
