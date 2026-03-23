@@ -1,18 +1,17 @@
-// pages/DashboardHome.jsx
 import React from 'react';
-import { ImageIcon, TrendingUp, Zap } from 'lucide-react';
+import { Image as ImageIcon, TrendingUp, Zap } from 'lucide-react';
 
 export default function DashboardHome({ user }) {
   const metrics = [
     { 
       title: 'الرصيد المتاح', 
-      value: user.available_credits, 
+      value: user?.available_credits || 0, 
       icon: <Zap size={24} className="text-yellow-500" />,
       bg: 'bg-yellow-50'
     },
     { 
       title: 'الإعلانات المُنشأة', 
-      value: user.total_generations, 
+      value: user?.total_generations || 0, 
       icon: <ImageIcon size={24} className="text-blue-500" />,
       bg: 'bg-blue-50'
     },
@@ -28,7 +27,7 @@ export default function DashboardHome({ user }) {
   return (
     <div className="max-w-7xl mx-auto space-y-6">
       
-      {/* Metrics Grid */}
+      {/* شبكة الإحصائيات */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {metrics.map((metric, index) => (
           <div key={index} className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between">
@@ -46,11 +45,10 @@ export default function DashboardHome({ user }) {
         ))}
       </div>
 
-      {/* Placeholder for Quick Actions or Recent Creatives */}
+      {/* إجراءات سريعة */}
       <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mt-8">
         <h3 className="text-lg font-bold text-gray-900 mb-4">إجراءات سريعة</h3>
-        <p className="text-gray-500 text-sm">سيتم إضافة اختصارات إنشاء الإعلانات وإعدادات العلامة التجارية هنا.</p>
-        {/* We will populate this in Step 3 */}
+        <p className="text-gray-500 text-sm">من هنا يمكنك البدء السريع في توليد الإعلانات أو ضبط هويتك البصرية.</p>
       </div>
     </div>
   );
